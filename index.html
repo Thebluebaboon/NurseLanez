@@ -3,56 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mend Aesthetics</title>
+    <title>Mend Aesthetics - Valentine's Specials</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
         :root {
             --pink-primary: #DB2777;
             --pink-dark: #BE185D;
             --pink-light: #FCE7F3;
         }
+        
+        /* Enhanced Animations */
+        @keyframes floatIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100px; }
+            100% { background-position: 200px; }
+        }
+        
+        .animate-float {
+            animation: floatIn 0.6s ease-out forwards;
+        }
+        
+        .service-card {
+            opacity: 0;
+            animation: floatIn 0.6s ease-out forwards;
+            border: 1px solid #F3F4F6;
+            background: white;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
         .valentine-banner {
-            background: linear-gradient(to right, #FDF2F8, #FCE7F3);
+            background: linear-gradient(120deg, #FDF2F8, #FCE7F3, #FDF2F8);
+            background-size: 200% 100%;
+            animation: shine 3s infinite linear;
             border-radius: 16px;
         }
+        
+        .giveaway-card {
+            background: linear-gradient(135deg, #FDF2F8, #FECDD3);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .giveaway-card::after {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+        
         .tab-content:not(.active) {
             display: none;
         }
+        
         .brand-pink {
             color: #DB2777;
         }
-        .bg-brand-pink {
-            background-color: #DB2777;
-        }
-        .bg-brand-pink:hover {
-            background-color: #BE185D;
-        }
-        .service-card {
-            border: 1px solid #F3F4F6;
-            background: white;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-        }
+        
         .book-button {
-            background-color: #DB2777;
+            background: linear-gradient(to right, var(--pink-primary), var(--pink-dark));
             color: white;
             padding: 0.75rem;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             width: 100%;
             font-weight: 500;
             margin-top: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+        
         .book-button:hover {
-            background-color: #BE185D;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(219, 39, 119, 0.2);
+        }
+        
+        .book-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite linear;
+        }
+        
+        /* Input field enhancements */
+        input, select {
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--pink-primary);
+            box-shadow: 0 0 0 2px rgba(219, 39, 119, 0.1);
+        }
+        
+        /* Navigation enhancements */
+        .nav-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Spacing and layout improvements */
+        .main-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 1rem;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <div id="app" class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow-sm p-4">
-            <h1 class="text-2xl font-bold text-center brand-pink">Mend Aesthetics</h1>
+        <header class="bg-white shadow-sm p-4 animate-float">
+            <h1 class="text-3xl font-bold text-center brand-pink">Mend Aesthetics</h1>
         </header>
 
         <!-- Main Content -->
@@ -60,13 +143,27 @@
             <!-- Home Tab -->
             <div id="homeTab" class="tab-content active">
                 <!-- Valentine's Banner -->
-                <div class="valentine-banner p-6 mb-6">
+                <div class="valentine-banner p-6 mb-6 animate-float">
                     <h2 class="text-2xl font-semibold text-pink-800">Valentine's Day Specials! 💝</h2>
                     <p class="text-pink-700 text-lg">Book now for exclusive February offers - Must book by Feb 28th</p>
                 </div>
 
+                <!-- Giveaway Card -->
+                <div class="giveaway-card p-6 mb-6 animate-float" style="animation-delay: 0.2s">
+                    <h3 class="text-xl font-semibold text-pink-800">✨ Free Botox Giveaway!</h3>
+                    <p class="text-pink-700 mt-2">Win a free Botox treatment valued at $500!</p>
+                    <div class="mt-4">
+                        <p class="text-gray-700"><span class="font-semibold">How to Enter:</span></p>
+                        <p class="text-pink-600 mt-1">1. Follow <a href="https://www.instagram.com/nurselanz.injects" target="_blank" class="font-bold underline">@nurselanz.injects</a></p>
+                        <p class="text-pink-600">2. Winner announced March 1st!</p>
+                    </div>
+                    <a href="https://www.instagram.com/nurselanz.injects" target="_blank" class="book-button text-center block no-underline mt-4">
+                        Enter Giveaway on Instagram
+                    </a>
+                </div>
+
                 <!-- Services -->
-                <div class="service-card">
+                <div class="service-card" style="animation-delay: 0.3s">
                     <h3 class="text-xl font-semibold">Lip Filler</h3>
                     <p class="text-gray-600">Natural-looking lip enhancement</p>
                     <p class="text-gray-800 mt-2">$650</p>
@@ -76,7 +173,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" style="animation-delay: 0.4s">
                     <h3 class="text-xl font-semibold">Botox & Dysport</h3>
                     <p class="text-gray-600">Wrinkle reduction treatment</p>
                     <p class="text-gray-800 mt-2">$12/unit</p>
@@ -86,7 +183,7 @@
                     </button>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" style="animation-delay: 0.5s">
                     <h3 class="text-xl font-semibold">Vitamin B12 Shot</h3>
                     <p class="text-gray-600">Energy boost & wellness treatment</p>
                     <p class="text-gray-800 mt-2">$40</p>
@@ -99,7 +196,7 @@
 
             <!-- Book Tab -->
             <div id="bookTab" class="tab-content">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-lg shadow-sm animate-float">
                     <h2 class="text-xl font-semibold mb-4">Book Appointment</h2>
                     <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
                         <div>
@@ -135,7 +232,7 @@
 
             <!-- Contact Tab -->
             <div id="contactTab" class="tab-content">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-lg shadow-sm animate-float">
                     <h2 class="text-xl font-semibold mb-4">Contact Us</h2>
                     <div class="space-y-3">
                         <p class="font-medium">Nurse Alana</p>
@@ -184,33 +281,4 @@
             // Update navigation buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('brand-pink');
-                btn.classList.add('text-gray-600');
-            });
-            event.currentTarget.classList.remove('text-gray-600');
-            event.currentTarget.classList.add('brand-pink');
-        }
-
-        function openBooking(service) {
-            switchTab('bookTab');
-            document.getElementById('serviceSelect').value = service;
-        }
-
-        function submitBooking(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            
-            const emailBody = `New Booking Request\n\n` +
-                `Service: ${formData.get('serviceSelect')}\n` +
-                `Name: ${formData.get('name')}\n` +
-                `Phone: ${formData.get('phone')}\n` +
-                `Date: ${formData.get('date')}\n` +
-                `Time: ${formData.get('time')}`;
-
-            window.location.href = `mailto:lanamamas3@gmail.com?subject=New Booking Request&body=${encodeURIComponent(emailBody)}`;
-            
-            alert('Thank you! We will contact you shortly to confirm your appointment.');
-        }
-    </script>
-</body>
-</html>
+                btn
